@@ -65,6 +65,7 @@ apiKey: "AIzaSyCW96QUnK23q8TndpSWZt5zvrPoJCeQMS4",
   measurementId: "G-Y4PCQ0XFBD"
 
 
+
   };
 
   // Initialize Firebase
@@ -171,7 +172,7 @@ color:#f1f1f8;
 /* ── LIGHT MODE ── */
 body.light-theme{
 background:#f3f4f6;
-color:#7793b9;
+color:#7fbe9c;
 }
 
 body{
@@ -196,7 +197,7 @@ cursor:pointer;
 width:100%;
 max-width:430px;
 margin:auto;
-min-height:100vh;
+min-height:100vh; 
 padding:12px;
 padding-bottom:90px;
 }
@@ -510,7 +511,7 @@ background:#334155;
 /* BALANCE */
 
 .balance-card{
- background:linear-gradient(135deg,#111827,#1e293b,#334155)!important;
+ background:linear-gradient(135deg,#0b101a, #74759f, #0c0e13)!important;
  box-shadow:0 10px 30px rgba(0,0,0,.35);
  Box-shadow: 0 6px 14px rgba(216, 176, 94, 0.35);
 padding:16px;
@@ -519,8 +520,8 @@ margin-bottom:14px;
 }
 
 .balance-title{
-font-size:12px;
-color:#f0f337;
+font-size:13px;
+color:#efdd49;
 margin-bottom:4px;
 text-align: center;
 }
@@ -861,34 +862,80 @@ color:#94a3b8;
 
 /* NAV */
 
+@keyframes navRotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
 .nav{
-Box-shadow: 0 6px 14px rgba(216, 162, 231, 0.35);
 position:fixed;
 bottom:10px;
 left:50%;
 transform:translateX(-50%);
 width:95%;
 max-width:320px;
-background:rgba(30, 41, 59, 0.85);
-backdrop-filter: blur(10px);
 padding:12px;
 border-radius:22px;
 display:flex;
 gap:8px;
 align-items:center;
 justify-content:space-around;
-border: 1px solid #80c76d;
-;
+overflow:hidden;
+z-index:0;
+}
+/* animtion code  */
+.nav::before{
+  content: '';
+  position: absolute;
+  z-index: -3;
+  left: -50%;
+  top: -20%;
+  width: 200%;
+  height: 200%;
+  background-color: #b608fafc;
+  background-repeat:repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(transparent, rgba(252, 240, 5, 0.989), transparent 30%);
+  animation: navRotate 4.5s linear infinite;
+}
+
+.nav::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 2px;
+    top: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    background:black;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+
+
+/* .nav::after{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 2px;
+  top: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background:transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 20px; */
 }
 
 /* Nav buttons styling */
 .nav button {
+  position: relative;
+  z-index: 1;
   flex: 0 0 auto;
   padding: 0;
   border: none;
-  background: #94a3b8;
-  color: rgb(15, 14, 14);
-  font-size: 12px;
+  background: rgb(77 167 167 / 99%);
+  color: #aadac0;
+  font-size: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -901,7 +948,7 @@ border: 1px solid #80c76d;
   width: 60px;
   padding: 8px;
   border-radius: 12px;
-  background: #1e293b;
+  background: transparent;
   opacity: 0.8;
 }
 
@@ -917,8 +964,10 @@ border: 1px solid #80c76d;
 
 /* Center Plus Button - Floating Style */
 .nav-plus-btn {
-  width: 68px;
-  height: 68px;
+  position: relative;
+  z-index: 1;
+  width: 60px;
+  height: 58px;
   border-radius: 50%;
   background: linear-gradient(135deg, #22c5af, #16a34a);
   color: white;
@@ -987,17 +1036,7 @@ font-size:16px;
 }
 
 }
-/* .whatsapp-btn{
-    display:block;
-    margin-top:10px;
-    padding:12px;
-    background:#25D366;
-    color:white;
-    text-align:center;
-    border-radius:12px;
-    font-weight:bold;
-    text-decoration:none;
-} */
+
 .row-2{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -1139,7 +1178,7 @@ body.light-theme .nav{
 
 body.light-theme .nav button:not(.nav-plus-btn){
   background: #ffffff00 !important;
-  color: #0a0a11 !important;
+  color: #ffffff !important;
 }
 
 body.light-theme .nav button.active{
@@ -1216,7 +1255,7 @@ body.light-theme html, body {
       <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
       Sign in with Google
     </button>
-    <div class="login-note">🔒 Sirf aapka account data dekh sakta hai.<br>Koi aur access nahi kar sakta.</div>
+    
   </div>
 </div>
 
@@ -1224,7 +1263,7 @@ body.light-theme html, body {
 <div id="pinOverlay" style="display:none;position:fixed;inset:0;background:#081225;z-index:99999;align-items:center;justify-content:center;flex-direction:column;padding:24px;">
   <div style="width:100%;max-width:300px;background:#111827;border:1px solid #1e293b;border-radius:24px;padding:28px 20px;text-align:center;">
     <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#6c63ff,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;box-shadow:0 6px 20px rgba(108,99,255,0.4);"><i class="ti ti-lock"></i></div>
-    <div id="pinTitle" style="font-size:18px;font-weight:800;color:#f1f1f8;margin-bottom:4px;">PIN Enter Karo</div>
+    <div id="pinTitle" style="font-size:18px;font-weight:800;color:#f1f1f8;margin-bottom:4px;">Enter PIN</div>
     <div id="pinSub" style="font-size:12px;color:#64748b;margin-bottom:20px;">4 digit PIN enter karo</div>
     <div style="display:flex;justify-content:center;gap:14px;margin-bottom:8px;">
       <div class="pd" id="pd0"></div>
@@ -1247,7 +1286,7 @@ body.light-theme html, body {
       <button class="pb" onclick="pp('0')">0</button>
       <button class="pb" onclick="pd()" style="background:transparent;border:none;color:#94a3b8;font-size:20px;">⌫</button>
     </div>
-    <div onclick="pinReset()" style="font-size:11px;color:#475569;cursor:pointer;text-decoration:underline;margin-top:4px;">PIN bhule? Reset karo</div>
+    <div onclick="pinReset()" style="font-size:11px;color:#475569;cursor:pointer;text-decoration:underline;margin-top:4px;">Reset PIN</div>
   </div>
 </div>
 
@@ -1264,7 +1303,7 @@ body.light-theme html, body {
 <i class="ti ti-wallet"></i>
 </div>
 
-<h3>Ex Tracker</h3>
+<h3>Ex-Track</h3>
 
 </div>
 
@@ -1313,8 +1352,18 @@ body.light-theme html, body {
 
 <div class="tab active" id="homeTab">
 
-<div class="r-section-title" style="margin-top:4px;">Top Parties</div>
-<div class="party-list" id="homePartyList"></div>
+<div class="r-section-title" style="margin-top:4px;">Expense Overview</div>
+
+<div class="donut-wrap" style="padding:20px;">
+  <div class="donut-canvas-wrap" style="width:160px;height:160px;">
+    <canvas id="homeDonutCanvas" width="160" height="160" style="width:160px;height:160px;"></canvas>
+    <div class="donut-center">
+      <span class="donut-center-label">Total</span>
+      <span class="donut-center-val" id="homeDonutTotal" style="font-size:16px;">₹0</span>
+    </div>
+  </div>
+  <div class="donut-legend" id="homeDonutLegend"></div>
+</div>
 
 <div class="r-section-title">Recent Entries</div>
 <div id="homeRecentList"></div>
@@ -1407,15 +1456,26 @@ placeholder="To">
 
 </div>
 
-<!-- PARTY -->
+<!-- DATE -->
 
 <div class="field">
 
-<label>Party Name</label>
+<label>Date</label>
 
-<select id="party">
+<input id="date" type="date">
+</div>
 
-<option value="">Select Party</option>
+  <!-- PARTY -->
+
+  <div class="field">
+
+  <label>Party Name</label>
+
+  <div style="display:flex;gap:8px;">
+
+  <select id="party" style="flex:1;">
+
+  <option value="">Select Party</option>
 
 
 <option>Self</option>
@@ -1438,6 +1498,29 @@ placeholder="To">
 
 </select>
 
+<button type="button" onclick="openPartyManager()" style="flex-shrink:0;width:48px;border-radius:12px;background:var(--accent,#6c63ff);color:white;border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+<i class="ti ti-edit"></i>
+</button>
+
+</div>
+
+</div>
+
+<!-- PARTY MANAGER MODAL -->
+<div id="partyManagerOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#0f1e35;border-radius:18px;padding:20px;width:100%;max-width:360px;max-height:80vh;overflow-y:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="color:#f1f1f8;font-size:16px;">Manage Parties</h3>
+      <button onclick="closePartyManager()" style="background:#1e293b;border:none;color:#94a3b8;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;">✕</button>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-bottom:14px;">
+      <input id="newPartyInput" type="text" placeholder="New party name" style="flex:1;padding:10px 12px;border-radius:10px;background:#1a1a2e;color:#f1f1f8;border:1px solid #2a2a40;">
+      <button onclick="addNewParty()" style="background:#22c55e;color:white;border:none;border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer;">Add</button>
+    </div>
+
+    <div id="partyManagerList"></div>
+  </div>
 </div>
 
 <!-- AMOUNT -->
@@ -1461,21 +1544,13 @@ placeholder="To">
 <option value="">Select Method</option>
 
 <option>Cash</option>
-<option>UPI</option>
-<option>Bank</option>
-<option>Card</option>
+<option>Online</option>
+/* <option>Bank</option>
+<option>Card</option> */
 
 </select>
 
 </div>
-
-<!-- DATE -->
-
-<div class="field">
-
-<label>Date</label>
-
-<input id="date" type="date">
 
 </div>
 
@@ -2358,38 +2433,69 @@ function showAddEntryModal(){
 }
 
 /* HOME OVERVIEW — Top Parties + Recent Entries */
+/* HOME — Expense Overview Donut (larger canvas) */
+function renderHomeDonut(inc, exp){
+  const canvas = document.getElementById('homeDonutCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const total = inc + exp;
+  const totalEl = document.getElementById('homeDonutTotal');
+  if(totalEl) totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+
+  ctx.clearRect(0,0,160,160);
+  const cx=80, cy=80, r=68, inner=44;
+  const segments = [
+    { val: exp, color:'#ef4444', label:'Expense' },
+    { val: inc, color:'#22c55e', label:'Income'  }
+  ];
+  let startAngle = -Math.PI/2;
+  const gap = 0.04;
+
+  if(total === 0){
+    ctx.beginPath();
+    ctx.arc(cx,cy,r,0,2*Math.PI);
+    ctx.arc(cx,cy,inner,2*Math.PI,0,true);
+    ctx.fillStyle='#1e3a5f';
+    ctx.fill();
+  } else {
+    segments.forEach(seg => {
+      const slice = (seg.val/total)*2*Math.PI - gap;
+      if(slice <= 0) return;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,r,startAngle,startAngle+slice);
+      ctx.arc(cx,cy,inner,startAngle+slice,startAngle,true);
+      ctx.closePath();
+      ctx.fillStyle = seg.color;
+      ctx.fill();
+      startAngle += slice + gap;
+    });
+  }
+
+  const leg = document.getElementById('homeDonutLegend');
+  if(leg){
+    leg.innerHTML = '';
+    segments.forEach(seg => {
+      const pct = total ? Math.round((seg.val/total)*100) : 0;
+      leg.innerHTML += `<div class="donut-legend-item">
+        <div class="legend-dot" style="background:${seg.color}"></div>
+        <span class="legend-label">${seg.label}</span>
+        <span class="legend-pct" style="color:${seg.color}">${pct}%</span>
+      </div>`;
+    });
+  }
+}
+
 function renderHomeOverview(){
   const data = (window.entries || entries || []);
 
-  // Top Parties
-  const map = {};
+  // Expense Overview Donut
+  let totalIncome = 0, totalExpense = 0;
   data.forEach(e => {
-    const p = e.party || 'Unknown';
-    if(!map[p]) map[p] = { inc:0, exp:0 };
-    if(e.type === 'payment') map[p].exp += Number(e.amount)||0;
-    else map[p].inc += Number(e.amount)||0;
+    if(e.type === 'payment') totalExpense += Number(e.amount)||0;
+    else totalIncome += Number(e.amount)||0;
   });
-  const sorted = Object.entries(map)
-    .map(([n,v])=>({name:n,total:v.inc+v.exp,inc:v.inc,exp:v.exp}))
-    .sort((a,b)=>b.total-a.total)
-    .slice(0,5);
-
-  const pWrap = document.getElementById('homePartyList');
-  if(pWrap){
-    if(!sorted.length){
-      pWrap.innerHTML = '<div style="text-align:center;color:#475569;padding:16px;">No data yet</div>';
-    } else {
-      pWrap.innerHTML = sorted.map((p,i)=>`
-        <div class="party-row">
-          <span class="party-rank">#${i+1}</span>
-          <span class="party-name">${p.name}</span>
-          <div style="text-align:right">
-            <div style="font-size:11px;color:#22c55e;font-weight:600">${p.inc>0?'+₹'+p.inc.toLocaleString('en-IN'):''}</div>
-            <div style="font-size:11px;color:#ef4444;font-weight:600">${p.exp>0?'-₹'+p.exp.toLocaleString('en-IN'):''}</div>
-          </div>
-        </div>`).join('');
-    }
-  }
+  renderHomeDonut(totalIncome, totalExpense);
 
   // Recent entries
   const recent = [...data].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);
@@ -2450,8 +2556,140 @@ window.onload = function () {
   console.log("🚀 App starting...");
   document.getElementById("date").value = new Date().toISOString().split("T")[0];
   setType("payment");
+  loadCustomParties();
   // Auth state listener handles loadEntries automatically
 };
+
+/* ── PARTY MANAGER ── */
+const DEFAULT_PARTIES = ["Self","Ghar","Sagar","Ritesh","Adarsh","Ritik","Mahi","Salary","office Expence","Mutual fund","APJ EMI","Chandrabhan bhaiya","Bank charges","Groww stock market","Dividend","Anjali","Mammi"];
+
+function getCustomParties(){
+  try{
+    return JSON.parse(localStorage.getItem('customParties') || '[]');
+  }catch(e){ return []; }
+}
+
+function getDeletedDefaults(){
+  try{
+    return JSON.parse(localStorage.getItem('deletedDefaultParties') || '[]');
+  }catch(e){ return []; }
+}
+
+function saveCustomParties(list){
+  localStorage.setItem('customParties', JSON.stringify(list));
+}
+
+function saveDeletedDefaults(list){
+  localStorage.setItem('deletedDefaultParties', JSON.stringify(list));
+}
+
+function getAllPartyNames(){
+  const deleted = getDeletedDefaults();
+  const activeDefaults = DEFAULT_PARTIES.filter(p => !deleted.includes(p));
+  return [...activeDefaults, ...getCustomParties()];
+}
+
+function loadCustomParties(){
+  const sel = document.getElementById('party');
+  if(!sel) return;
+  const current = sel.value;
+  sel.innerHTML = '<option value="">Select Party</option>';
+  getAllPartyNames().forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  });
+  if(current) sel.value = current;
+}
+
+function openPartyManager(){
+  document.getElementById('partyManagerOverlay').style.display = 'flex';
+  renderPartyManagerList();
+}
+
+function closePartyManager(){
+  document.getElementById('partyManagerOverlay').style.display = 'none';
+  document.getElementById('newPartyInput').value = '';
+}
+
+function renderPartyManagerList(){
+  const wrap = document.getElementById('partyManagerList');
+  const names = getAllPartyNames();
+  if(!names.length){
+    wrap.innerHTML = '<div style="text-align:center;color:#64748b;padding:16px;">No parties yet</div>';
+    return;
+  }
+  wrap.innerHTML = names.map((name, idx) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #1e293b;">
+      <span style="flex:1;color:#f1f1f8;font-size:14px;" id="partyLabel_${idx}">${name}</span>
+      <button onclick="editPartyName('${encodeURIComponent(name)}', ${idx})" style="background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3);border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:13px;">
+        <i class="ti ti-pencil"></i>
+      </button>
+      <button onclick="deletePartyName('${encodeURIComponent(name)}')" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:13px;">
+        <i class="ti ti-trash"></i>
+      </button>
+    </div>`).join('');
+}
+
+function addNewParty(){
+  const input = document.getElementById('newPartyInput');
+  const name = input.value.trim();
+  if(!name){ alert('Party ka naam likho'); return; }
+  if(getAllPartyNames().includes(name)){ alert('Yeh party already exist karti hai'); return; }
+  const custom = getCustomParties();
+  custom.push(name);
+  saveCustomParties(custom);
+  input.value = '';
+  loadCustomParties();
+  renderPartyManagerList();
+}
+
+function editPartyName(encodedOldName, idx){
+  const oldName = decodeURIComponent(encodedOldName);
+  const newName = prompt('Naya naam likho:', oldName);
+  if(!newName || newName.trim() === '' || newName === oldName) return;
+  const trimmed = newName.trim();
+
+  const custom = getCustomParties();
+  const customIdx = custom.indexOf(oldName);
+
+  if(customIdx !== -1){
+    // Custom party - rename directly
+    custom[customIdx] = trimmed;
+    saveCustomParties(custom);
+  } else if(DEFAULT_PARTIES.includes(oldName)){
+    // Default party - mark old as deleted, add new as custom
+    const deleted = getDeletedDefaults();
+    if(!deleted.includes(oldName)) deleted.push(oldName);
+    saveDeletedDefaults(deleted);
+    custom.push(trimmed);
+    saveCustomParties(custom);
+  }
+
+  loadCustomParties();
+  renderPartyManagerList();
+}
+
+function deletePartyName(encodedName){
+  const name = decodeURIComponent(encodedName);
+  if(!confirm('"' + name + '" delete karna chahte ho?')) return;
+
+  const custom = getCustomParties();
+  const customIdx = custom.indexOf(name);
+
+  if(customIdx !== -1){
+    custom.splice(customIdx, 1);
+    saveCustomParties(custom);
+  } else if(DEFAULT_PARTIES.includes(name)){
+    const deleted = getDeletedDefaults();
+    if(!deleted.includes(name)) deleted.push(name);
+    saveDeletedDefaults(deleted);
+  }
+
+  loadCustomParties();
+  renderPartyManagerList();
+}
 
 /* ── PIN SYSTEM ── */
 let _pin = '', _pmode = 'enter', _ptmp = '';
