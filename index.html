@@ -1559,7 +1559,7 @@ function renderCharts(){
  if(!ctx){
  // Canvas was removed by a previous "no data" render — nothing to draw into, skip safely.
  } else if(catArr.length===0){
- ctx.parentElement.innerHTML = '<canvas id="donutChart"></canvas><div class="legend" id="donutLegend"></div><div class="empty-state" style="width:100%;padding:20px 0;"><i class="ti ti-chart-donut-3"></i><br>Is mahine ka data nahi hai</div>';
+ ctx.parentElement.innerHTML = '<canvas id="donutChart"></canvas><div class="legend" id="donutLegend"></div><div class="empty-state" style="width:100%;padding:20px 0;"><i class="ti ti-chart-donut-3"></i><br>i</div>';
  } else {
  donutChartObj = new Chart(ctx, {
  type:"doughnut",
